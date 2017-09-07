@@ -31,10 +31,10 @@ $ git config --list
 
 1. [Create a new repo](https://help.github.com/articles/create-a-repo/)
 
-  ```shell
-  $ git clone https://github.com/username/repo-name.git
-  $ cd repo-name
-  ```
+    ```shell
+    $ git clone https://github.com/username/repo-name.git
+    $ cd repo-name
+    ```
 
 2. Create some files in `repo-name` locally.
 
@@ -47,32 +47,32 @@ $ git config --list
 
 3. Commit to this repo
 
-  ```shell
-  $ cd repo-name
+    ```shell
+    $ cd repo-name
 
-  $ git add .
-  $ git commit -m "your commit message"
-  $ git push
+    $ git add .
+    $ git commit -m "your commit message"
+    $ git push
 
-  $ git status
-  ```
+    $ git status
+    ```
 
 ## File management
 
 1. Remove files
 
-  ```shell
-  $ cd repo-name
+    ```shell
+    $ cd repo-name
 
-  # remove file locally and from repo
-  $ git rm file-name
+    # remove file locally and from repo
+    $ git rm file-name
 
-  # remove file from repo, but not locally
-  $ git rm --cached file-name
+    # remove file from repo, but not locally
+    $ git rm --cached file-name
 
-  $ git commit -m "your commit message"
-  $ git push
-  ```
+    $ git commit -m "your commit message"
+    $ git push
+    ```
 
 ## Logs
 
