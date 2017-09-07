@@ -36,6 +36,7 @@ $ git config --list
   $ cd repo-name
   ```
 
+<<<<<<< HEAD
 2. Create some files in `repo-name` locally.
 
    ```shell
@@ -44,8 +45,26 @@ $ git config --list
    # review changes you've saved, but not yet committed
    $ git diff
    ```
+||||||| merged common ancestors
+2. Commit to this repo:
+=======
+2. Create some files in `repo-name` locally.
+
+   ```shell
+   $ cd repo-name
+>>>>>>> c25d01e8ae014a942b98370e5dc3853d45b21ad0
+
+<<<<<<< HEAD
+3. Commit to this repo
+||||||| merged common ancestors
+  Create some files in `repo-name`
+=======
+   # review changes you've saved, but not yet committed
+   $ git diff
+   ```
 
 3. Commit to this repo
+>>>>>>> c25d01e8ae014a942b98370e5dc3853d45b21ad0
 
   ```shell
   $ cd repo-name
