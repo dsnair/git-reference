@@ -6,7 +6,7 @@ Quick git summary
 
 ```shell
 # associate git commits with your name
-$ git config --global user.name "your-name"
+$ git config --global user.name "your name"
 
 # associate git commits with your email
 $ git config --global user.email "username@email.com"
@@ -111,7 +111,7 @@ $ git tag -a v1.0 -m "version 1.0"
 # tag a specific commit, say SHA1234
 $ git tag -a v1.0 SHA1234 -m "version 1.0"
 
-# see HEAD
+# see HEAD and branches
 $ git log --oneline --decorate
 
 # delete tag
@@ -167,7 +167,7 @@ $ git merge new-branch-name
 $ cd repo-name
 
 # edit most-recent commit messages or include/change committed files
-$ git commit --amend
+$ git commit --amend -m "your commit message"
 
 # (make a new commit to) reverse a commit/content
 $ git revert SHA1234
