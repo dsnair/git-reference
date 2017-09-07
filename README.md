@@ -49,9 +49,11 @@ $ git config --list
 
   ```shell
   $ cd repo-name
+
   $ git add .
   $ git commit -m "your commit message"
   $ git push
+
   $ git status
   ```
 
