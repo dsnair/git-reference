@@ -31,48 +31,48 @@ $ git config --list
 
 1. [Create a new repo](https://help.github.com/articles/create-a-repo/)
 
-    ```shell
-    $ git clone https://github.com/username/repo-name.git
-    $ cd repo-name
-    ```
+  ```shell
+  $ git clone https://github.com/username/repo-name.git
+  $ cd repo-name
+  ```
 
 2. Create some files in `repo-name` locally.
 
-   ```shell
-   $ cd repo-name
+ ```shell
+ $ cd repo-name
 
-   # review changes you've saved, but not yet committed
-   $ git diff
-   ```
+ # review changes you've saved, but not yet committed
+ $ git diff
+ ```
 
 3. Commit to this repo
 
-    ```shell
-    $ cd repo-name
+  ```shell
+  $ cd repo-name
 
-    $ git add .
-    $ git commit -m "your commit message"
-    $ git push
+  $ git add .
+  $ git commit -m "your commit message"
+  $ git push
 
-    $ git status
-    ```
+  $ git status
+  ```
 
 ## File management
 
 1. Remove files
 
-    ```shell
-    $ cd repo-name
+  ```shell
+  $ cd repo-name
 
-    # remove file locally and from repo
-    $ git rm file-name
+  # remove file locally and from repo
+  $ git rm file-name
 
-    # remove file from repo, but not locally
-    $ git rm --cached file-name
+  # remove file from repo, but not locally
+  $ git rm --cached file-name
 
-    $ git commit -m "your commit message"
-    $ git push
-    ```
+  $ git commit -m "your commit message"
+  $ git push
+  ```
 
 ## Logs
 
@@ -161,6 +161,30 @@ $ git checkout master
 $ git merge new-branch-name
 ```
 
+### Forks
+
+1. Sync the Fork
+
+  ```shell
+  $ cd repo-name
+
+  # list remote repo for the fork
+  $ git remote -v
+
+  # specify new remote upstream repo that the fork will be synced with
+  $ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+
+  # verify upstream repo
+  $ git remote -v
+
+  # fetch branches and commits from upstream repo
+  $ git fetch upstream
+
+  $ git checkout master
+
+  # merge chages from upstream/master to your local master
+  $ git merge upstream/master
+  ```
 ## Undo
 
 ```shell
