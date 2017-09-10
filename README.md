@@ -163,7 +163,7 @@ $ git merge new-branch-name
 
 ### Forks
 
-1. Sync the Fork
+1. Sync Fork Locally
 
   ```shell
   $ cd repo-name
@@ -185,6 +185,13 @@ $ git merge new-branch-name
   # merge chages from upstream/master to your local master
   $ git merge upstream/master
   ```
+
+2. Update Fork on github
+
+  ```shell
+  $ git push origin master
+  ```
+
 ## Undo
 
 ```shell
