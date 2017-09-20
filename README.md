@@ -27,54 +27,76 @@ $ git config --global core.editor "'/Applications/Sublime Text 2.app/Contents/Sh
 $ git config --list
 ```
 
-## Commits
+## 1. Create New Repo
 
-1. [Create a new repo](https://help.github.com/articles/create-a-repo/)
+### On GitHub
 
-  ```shell
-  $ git clone https://github.com/username/repo-name.git
-  $ cd repo-name
-  ```
+[Create a new repo](https://help.github.com/articles/create-a-repo/)
 
-2. Create some files in `repo-name` locally.
+```shell
+$ git clone https://github.com/username/repo-name.git
+$ cd repo-name
+```
+
+Create some files in _repo-name_ locally.
 
  ```shell
- $ cd repo-name
-
  # review changes you've saved, but not yet committed
  $ git diff
+
+ $ git add .
+ $ git commit -m "your commit message"
+ $ git push
+
+ $ git status
  ```
 
-3. Commit to this repo
+### From Command Line
 
-  ```shell
-  $ cd repo-name
+[Create a new empty repo](https://help.github.com/articles/create-a-repo/). Don't initialize with a README and license.
 
-  $ git add .
-  $ git commit -m "your commit message"
-  $ git push
+```shell
+$ mkdir repo-name
+$ cd repo-name
 
-  $ git status
-  ```
+# convert this directory into a Git repo
+$ git init
+```
 
-## File management
+Create some files in _repo-name_ locally.
 
-1. Remove files
+`git remote` allows you to manage and interact with remote repositories. `origin` is an alias for the full URL path to the remote repo https://github.com/USER_NAME/REPO_NAME.git. To view this full path, `git remote -v`.
 
-  ```shell
-  $ cd repo-name
+```shell
+$ git add .
+$ git commit -m "your commit message"
 
-  # remove file locally and from repo
-  $ git rm file-name
+# create an alias 'origin' that points to a project on GitHub
+$ git remote add origin https://github.com/USER_NAME/REPO_NAME.git
 
-  # remove file from repo, but not locally
-  $ git rm --cached file-name
+# push local changes to origin's master branch & add upstream tracking reference for every branch (-u)
+$ git push -u origin master
 
-  $ git commit -m "your commit message"
-  $ git push
-  ```
+# look for origin/master. It means that local branch is tracking master branch on remote origin
+$ git log --oneline --graph --decorate --all
+```
 
-## Logs
+## 2. File management
+
+```shell
+$ cd repo-name
+
+# remove file locally and from remote repo
+$ git rm file-name
+
+# remove file from remote repo, but not locally
+$ git rm --cached file-name
+
+$ git commit -m "your commit message"
+$ git push
+```
+
+## 3. Logs
 
 ```shell
 $ cd repo-name
@@ -98,14 +120,14 @@ $ git show SHA1234
 $ git log --decorate
 ```
 
-## Collaborate
+## 4. Version Control
 
 ### Tags
 
 ```shell
 $ cd repo-name
 
-# mark recent commit as important; used to annotate version releases
+# mark recent commit as important; used to annotate (-a) version releases
 $ git tag -a v1.0 -m "version 1.0"
 
 # tag a specific commit, say SHA1234
@@ -156,12 +178,34 @@ $ cd repo-name
 # find out where the HEAD is pointing
 $ git log --oneline --decorate
 
-# To merge with master
+# To merge a branch with master
 $ git checkout master
 $ git merge new-branch-name
 ```
 
-### Forks
+## 5. Collaborate
+
+### Push/Pull
+
+```shell
+# push local repo's changes up to remote origin's master branch
+$ git push origin master
+
+# pull changes down from remote origin's master branch to local branch
+$ git pull origin master
+```
+
+### Fetch
+
+If the remote origin has some changes that the local repo doesn't have and vice-versa, then do a `git fetch`. It pulls changes from remote origin's branch, but (unlike git pull) it _does not_ automatically merge the local branch with the remote tracking branch after receiving the changes. This is to prevent a merge conflict. After receiving remote changes, manually merge the local branch with the remote tracking branch. Now that the local repo has all the changes, push them to the remote origin.
+
+```shell
+$ git fetch origin master
+$ git merge origin/master
+$ git push origin master
+```
+
+### Fork
 
 1. Sync Fork Locally
 
@@ -192,7 +236,7 @@ $ git merge new-branch-name
   $ git push origin master
   ```
 
-## Undo
+## 6. Undo
 
 ```shell
 $ cd repo-name
@@ -216,5 +260,6 @@ $ git reset --hard HEAD~n
 ## Reference
 
 * [Udacity: Version Control with Git](https://www.udacity.com/course/version-control-with-git--ud123)
+* [Udacity: Github & Collaboration](https://www.udacity.com/course/github-collaboration--ud456)
 * [Git docs](https://git-scm.com/docs/)
 * [GitHub help](https://help.github.com/)
