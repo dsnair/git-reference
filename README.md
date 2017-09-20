@@ -168,7 +168,7 @@ $ git log --oneline --decorate --graph --all
 $ git branch -d new-branch-name2
 ```
 
-### Merges
+### Merge
 
 ```shell
 $ cd repo-name
@@ -204,6 +204,8 @@ $ git push origin master
 ```
 
 ### Fork
+
+Fork makes an identical copy of a _remote_ repo. This copy is also a _remote_ repo and you're it's owner. Whereas, cloning makes an identical copy of a _remote_ repo onto a _local_ machine.
 
 1. Sync Fork Locally
 
