@@ -1,7 +1,5 @@
 # README
 
-Quick git summary
-
 ## First-time config after installation
 
 ```shell
