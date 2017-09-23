@@ -75,7 +75,7 @@ $ git remote add origin https://github.com/USER_NAME/REPO_NAME.git
 # push local changes to origin's master branch & add upstream tracking reference for every branch (-u)
 $ git push -u origin master
 
-# look for origin/master. It means that local branch is tracking master branch on remote origin
+# origin/master means that local branch is tracking master branch on remote origin
 $ git log --oneline --graph --decorate --all
 ```
 
@@ -195,10 +195,12 @@ $ git pull origin master
 
 ### Fetch
 
-If the remote origin has some changes that the local repo doesn't have and vice-versa, then do a `git fetch`. It pulls changes from remote origin's branch, but (unlike git pull) it _does not_ automatically merge the local branch with the remote tracking branch after receiving the changes. This is to prevent a merge conflict. After receiving remote changes, manually merge the local branch with the remote tracking branch. Now that the local repo has all the changes, push them to the remote origin.
+If the remote origin has some changes that the local repo doesn't have and vice-versa, then do a `git fetch`. It pulls changes from remote origin's branch, but (unlike git pull) it _does not_ automatically merge the local branch with the remote tracking branch after receiving the changes. This is to prevent a merge conflict. After receiving remote changes, commit your local changes and then manually merge the local branch with the remote tracking branch. Now that the local repo has all the changes, push them to the remote origin.
 
 ```shell
 $ git fetch origin master
+$ git add .
+$ git commit -m "your commit message"
 $ git merge origin/master
 $ git push origin master
 ```
@@ -207,41 +209,56 @@ $ git push origin master
 
 Fork makes an identical copy of a _remote_ repo. This copy is also a _remote_ repo and you're it's owner. Whereas, cloning makes an identical copy of a _remote_ repo onto a _local_ machine.
 
-1. Sync Fork Locally
+`origin` = connection between local repo and remote forked repo  
+`upstream` = connection between local repo and remote source repo that was forked
+
+1. Sync Forked Repo Locally
 
   ```shell
   $ cd repo-name
 
-  # list remote repo for the fork
-  $ git remote -v
-
-  # specify new remote upstream repo that the fork will be synced with
+  # create connection between local repo and source repo that was forked
   $ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
-
-  # verify upstream repo
-  $ git remote -v
 
   # fetch branches and commits from upstream repo
   $ git fetch upstream
 
+  # switch to local master branch
   $ git checkout master
 
-  # merge chages from upstream/master to your local master
+  # merge changes from upstream/master to local master
   $ git merge upstream/master
   ```
 
-2. Update Fork on github
+2. Update Forked Repo on GitHub
 
   ```shell
   $ git push origin master
   ```
 
-## 6. Undo
+### Logs
+
+```shell
+# see how many commits each contributor added
+$ git shortlog
+
+# -n sorts # commits numerically (rather than alphabetically by contributor name)
+# -s prints total # commits for each contributor (rather than individual commit messages)
+$ git shortlog -s -n
+
+# filter commits by author name
+$ git log --author="author name"
+
+# filter by commits referencing specific words
+$ git log --grep="search words"
+```
+
+## 6. Edit Commits
 
 ```shell
 $ cd repo-name
 
-# edit most-recent commit messages or include/change committed files
+# edit most recent commit message or include/change committed files
 $ git commit --amend -m "your commit message"
 
 # (make a new commit to) reverse a commit/content
@@ -255,6 +272,10 @@ $ git reset --soft HEAD~n
 
 # erase commit/content
 $ git reset --hard HEAD~n
+$ git push -f origin master # since this deletes content, force push (-f)
+
+# squash/combine n commits together
+$ git rebase -i HEAD~n
 ```
 
 ## Reference
