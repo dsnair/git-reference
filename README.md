@@ -21,6 +21,10 @@ $ git config --global core.editor "atom --wait"
   # 2. Sublime
 $ git config --global core.editor "'/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl' -n -w"
 
+# save login credentials
+$ git config --global credential.helper store
+# git config --global credential.helper cache
+
 # review your current configuration
 $ git config --list
 ```
@@ -239,7 +243,7 @@ Fork makes an identical copy of a _remote_ repo. This copy is also a _remote_ re
 ### Logs
 
 ```shell
-# see how many commits each contributor added
+# see how many commits each contributor made
 $ git shortlog
 
 # -n sorts # commits numerically (rather than alphabetically by contributor name)
@@ -258,12 +262,6 @@ $ git log --grep="search words"
 ```shell
 $ cd repo-name
 
-# edit most recent commit message or include/change committed files
-$ git commit --amend -m "your commit message"
-
-# (make a new commit to) reverse a commit/content
-$ git revert SHA1234
-
 # move commit/content to working directory; default
 $ git reset --mixed HEAD~n
 
@@ -272,10 +270,16 @@ $ git reset --soft HEAD~n
 
 # erase commit/content
 $ git reset --hard HEAD~n
-$ git push -f origin master # since this deletes content, force push (-f)
+$ git push -f origin master # needs force push (-f) since deleting content
 
-# squash/combine n commits together
+# edit last commit message or include/change last committed files
+$ git commit --amend -m "your commit message"
+
+# squash/combine n commits together; (-i interactive)
 $ git rebase -i HEAD~n
+
+# (make a new commit to) reverse a commit/content
+$ git revert SHA1234
 ```
 
 ## Reference
