@@ -275,8 +275,9 @@ $ git push -f origin master # needs force push (-f) since deleting content
 # edit last commit message or include/change last committed files
 $ git commit --amend -m "your commit message"
 
-# squash/combine n commits together; (-i interactive)
+# squash/combine n commits together; -i interactive
 $ git rebase -i HEAD~n
+$ git push -f
 
 # (make a new commit to) reverse a commit/content
 $ git revert SHA1234
