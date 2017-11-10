@@ -174,16 +174,28 @@ $ git branch -d new-branch-name2
 
 ### Merge
 
-```shell
-$ cd repo-name
+1. Merge a Branch with Master
 
-# find out where the HEAD is pointing
-$ git log --oneline --decorate
+  ```shell
+  $ cd repo-name
 
-# To merge a branch with master
-$ git checkout master
-$ git merge new-branch-name
-```
+  # find out where the HEAD is pointing
+  $ git log --oneline --decorate
+
+  # To merge a branch with master
+  $ git checkout master
+  $ git merge new-branch-name
+  ```
+
+2. Merge ProjectA into ProjectB with its history
+
+  ```shell
+  $ cd path/to/project-b
+  $ git remote add project-a path/to/project-a
+  $ git fetch project-a
+  $ git merge --allow-unrelated-histories project-a/master # or whichever branch you want to merge
+  $ git remote remove project-a
+  ```
 
 ## 5. Collaborate
 
