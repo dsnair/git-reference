@@ -9,11 +9,12 @@ $ git config --global user.name "your name"
 # associate git commits with your email
 $ git config --global user.email "username@email.com"
 
-# color git output
-$ git config --global color.ui auto
+# save login credentials
+$ git config --global credential.helper store
+# git config --global credential.helper cache
 
-# display the original state in a conflict
-$ git config --global merge.conflictstyle diff3
+# files to ignore in every git repo on your computer
+$ git config --global core.excludesfile ~/.gitignore
 
 # set-up git with your text editor
   # 1. Atom
@@ -21,9 +22,11 @@ $ git config --global core.editor "atom --wait"
   # 2. Sublime
 $ git config --global core.editor "'/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl' -n -w"
 
-# save login credentials
-$ git config --global credential.helper store
-# git config --global credential.helper cache
+# color git output
+$ git config --global color.ui auto
+
+# display the original state in a conflict
+$ git config --global merge.conflictstyle diff3
 
 # review your current configuration
 $ git config --list
@@ -80,7 +83,7 @@ $ git remote add origin https://github.com/USER_NAME/REPO_NAME.git
 $ git push -u origin master
 
 # origin/master means that local branch is tracking master branch on remote origin
-$ git log --oneline --graph --decorate --all
+$ git log --oneline --graph --all
 ```
 
 ## 2. File management
@@ -103,23 +106,21 @@ $ git push
 ```shell
 $ cd repo-name
 
-# see SHA (commit ID), author, date, commit messages
+# see SHA (commit ID), author, date, commit messages, current HEAD
 $ git log
+# git log --decorate
 
-# list SHA (7-characters) and commit messages
+# list SHA (7-characters), commit messages, current HEAD
 $ git log --oneline
 
-# see SHA, author, date, commit messages, modified files and # of lines added/removed in them
+# see SHA, author, date, commit messages, current HEAD, modified files and # of lines added/removed in them
 $ git log --stat
 
-# see SHA, author, date, commit messages, what exact lines were added/removed in all files
+# see SHA, author, date, commit messages, current HEAD, what exact lines were added/removed in all files
 $ git log --patch
 
 # git log --patch output for only a single 7-characters SHA, say SHA1234
 $ git show SHA1234
-
-# see SHA, author, date, commit messages, current HEAD
-$ git log --decorate
 ```
 
 ## 4. Version Control
@@ -136,7 +137,7 @@ $ git tag -a v1.0 -m "version 1.0"
 $ git tag -a v1.0 SHA1234 -m "version 1.0"
 
 # see HEAD and branches
-$ git log --oneline --decorate
+$ git log --oneline
 
 # delete tag
 $ git tag -d v1.0
@@ -159,14 +160,18 @@ $ git branch new-branch-name
 # switch to a specific branch to make commits there
 $ git checkout new-branch-name
 
-# create and switch to a new branch starting at the same location as master (fast forward merging)
+# create and switch to a new branch starting at the most recent commit in master (fast forward merging).
+# This copies the entire state (committed/uncommitted files) of the master branch to the new branch.
 $ git checkout -b new-branch-name master
 
 # create and switch to a new branch starting at a previous commit (divergent merging)
 $ git checkout -b new-branch-name2 SHA1234
 
+# shift the tip of branch-name to the most recent commit on master
+$ git rebase master branch-name
+
 # view branches (--graph) all at once (--all)
-$ git log --oneline --decorate --graph --all
+$ git log --oneline --graph --all
 
 # delete a branch
 $ git branch -d new-branch-name2
@@ -180,14 +185,14 @@ $ git branch -d new-branch-name2
   $ cd repo-name
 
   # find out where the HEAD is pointing
-  $ git log --oneline --decorate
+  $ git log --oneline
 
   # To merge a branch with master
   $ git checkout master
   $ git merge new-branch-name
   ```
 
-2. Merge ProjectA into ProjectB with its history
+2. Merge project-a into project-b with its history
 
   ```shell
   $ cd path/to/project-b
