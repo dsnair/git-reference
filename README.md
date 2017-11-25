@@ -190,13 +190,14 @@ $ git branch -d new-branch-name2
   # To merge a branch with master
   $ git checkout master
   $ git merge new-branch-name
+  $ git push
   ```
 
 2. Merge project-a into project-b with its history
 
   ```shell
   $ cd path/to/project-b
-  $ git remote add project-a path/to/project-a
+  $ git remote add project-a https://github.com/USERNAME/project-a.git
   $ git fetch project-a
   $ git merge --allow-unrelated-histories project-a/master # or whichever branch you want to merge
   $ git remote remove project-a
@@ -288,6 +289,10 @@ $ git reset --soft HEAD~n
 # erase commit/content
 $ git reset --hard HEAD~n
 $ git push -f origin master # needs force push (-f) since deleting content
+
+# stash away local dirty changes, do something, release stash
+$ git stash --include-untracked
+$ git stash pop
 
 # edit last commit message or include/change last committed files
 $ git commit --amend -m "your commit message"
