@@ -281,13 +281,15 @@ $ git log --grep="search words"
 $ cd repo-name
 
 # move commit/content to working directory; default
-$ git reset --mixed HEAD~n
+$ git reset --mixed SHA1234  # or, git reset --mixed HEAD~n
+$ git push -f origin master
 
 # move commit/content to staging index, where n is ancestral ref from HEAD
-$ git reset --soft HEAD~n
+$ git reset --soft SHA1234  # or, git reset --soft HEAD~n
+$ git push -f origin master
 
 # erase commit/content
-$ git reset --hard HEAD~n
+$ git reset --hard SHA1234  # or, git reset --hard HEAD~n
 $ git push -f origin master # needs force push (-f) since deleting content
 
 # stash away local dirty changes, do something, release stash
