@@ -155,17 +155,17 @@ $ cd repo-name
 $ git branch
 
 # create a new branch  
-$ git branch new-branch-name
+$ git branch branch-name
 
 # switch to a specific branch to make commits there
-$ git checkout new-branch-name
+$ git checkout branch-name
 
 # create and switch to a new branch starting at the most recent commit in master (fast forward merging).
 # This copies the entire state (committed/uncommitted files) of the master branch to the new branch.
-$ git checkout -b new-branch-name master
+$ git checkout -b branch-name master
 
 # create and switch to a new branch starting at a previous commit (divergent merging)
-$ git checkout -b new-branch-name2 SHA1234
+$ git checkout -b branch-name2 SHA1234
 
 # shift the tip of branch-name to the most recent commit on master
 $ git rebase master branch-name
@@ -173,8 +173,11 @@ $ git rebase master branch-name
 # view branches (--graph) all at once (--all)
 $ git log --oneline --graph --all
 
-# delete a branch
-$ git branch -d new-branch-name2
+# delete a local branch
+$ git branch -d branch-name
+
+# delete a remote branch
+$ git push remote-branch-name -d local-branch-name
 ```
 
 ### Merge
