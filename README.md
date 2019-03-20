@@ -260,6 +260,14 @@ Fork makes an identical copy of a _remote_ repo. This copy is also a _remote_ re
   ```shell
   $ git push origin master
   ```
+  
+When you fork a repo with multiple, remote branches
+
+```shell
+$ git branch -a
+$ git checkout branch-name
+```
+shows all remote branches and allows you to checkout one of them to begin work locally. 
 
 ### Logs
 
