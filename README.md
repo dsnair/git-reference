@@ -177,7 +177,7 @@ $ git log --oneline --graph --all
 $ git branch -d branch-name
 
 # delete a remote branch
-$ git push remote-branch-name -d local-branch-name
+$ git push origin --delete remote-branch-name
 ```
 
 ### Merge
